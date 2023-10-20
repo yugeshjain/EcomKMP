@@ -1,10 +1,15 @@
 [versions]
-agp = "8.2.0-beta02"
+agp = "8.1.2"
 kotlin = "1.9.10"
 compose = "1.5.3"
 compose-compiler = "1.5.3"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
+decomposeExt = "2.1.2-compose-experimental"
+precomposeVersion = "1.5.4"
+koinVersion = "3.5.0"
+koinComposeVersion = "1.1.0"
+compose-tooling-preview-version = "1.4.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -14,6 +19,18 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-tooling-preview-version" }
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decomposeExt" }
+decompose-compose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decomposeExt" }
+precompose = { module = "moe.tlaster:precompose", version.ref = "precomposeVersion" }
+
+# Pre-Compose
+precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precomposeVersion" }
+precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precomposeVersion" }
+
+# Koin-DI
+koin = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComposeVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

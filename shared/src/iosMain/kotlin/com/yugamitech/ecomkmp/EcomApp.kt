@@ -1,5 +1,5 @@
 package com.yugamitech.ecomkmp
 
-import androidx.compose.ui.window.ComposeUIViewController
+import moe.tlaster.precompose.PreComposeApplication
 
-fun EcomAppMainViewController() = ComposeUIViewController { EcomApp() }
+fun EcomAppMainViewController() = PreComposeApplication { EcomApp() }
