@@ -4,11 +4,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.yugamitech.ecomkmp.domain.model.fakeNewProducts
+import com.yugamitech.ecomkmp.domain.model.fakeSaleProducts
 import com.yugamitech.ecomkmp.presentation.home.components.HomeItemsVerticalScroll
 import com.yugamitech.ecomkmp.presentation.home.components.PageTopSaleCard
 import com.yugamitech.ecomkmp.presentation.home.components.SectionBanner
-import com.yugamitech.ecomkmp.presentation.home.components.fakeNewProducts
-import com.yugamitech.ecomkmp.presentation.home.components.fakeSaleProducts
 
 @Composable
 fun HomeScreen() {

@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yugamitech.ecomkmp.domain.model.ShoppingCategory
 import com.yugamitech.ecomkmp.util.black
 import com.yugamitech.ecomkmp.util.white
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -70,27 +71,3 @@ fun CategoryCard(
         }
     )
 }
-
-data class ShoppingCategory(
-    val categoryTitle: String,
-    val categoryImage: String,
-)
-
-val fakeCategories = listOf(
-    ShoppingCategory(
-        categoryTitle = "New",
-        categoryImage = "newcategory.png"
-    ),
-    ShoppingCategory(
-        categoryTitle = "Clothes",
-        categoryImage = "clothescategory.png"
-    ),
-    ShoppingCategory(
-        categoryTitle = "Shoes",
-        categoryImage = "shoescategory.png"
-    ),
-    ShoppingCategory(
-        categoryTitle = "Accesories",
-        categoryImage = "accesoriescategory.png"
-    ),
-)

@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import com.yugamitech.ecomkmp.commonui.topAppBar.EcomTopAppBar
+import com.yugamitech.ecomkmp.domain.model.fakeCategories
 import com.yugamitech.ecomkmp.presentation.shop.components.CategoryCard
 import com.yugamitech.ecomkmp.presentation.shop.components.SaleBanner
-import com.yugamitech.ecomkmp.presentation.shop.components.fakeCategories
 import com.yugamitech.ecomkmp.util.off_white_bg
 
 @OptIn(ExperimentalFoundationApi::class)

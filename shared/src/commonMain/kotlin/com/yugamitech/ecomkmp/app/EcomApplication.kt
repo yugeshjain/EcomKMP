@@ -7,11 +7,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yugamitech.ecomkmp.app.di.koinModule
 import com.yugamitech.ecomkmp.app.util.popUpToHomeScreen
 import com.yugamitech.ecomkmp.commonui.bottombar.BottomNavBar
+import com.yugamitech.ecomkmp.navigation.BagDestination
 import com.yugamitech.ecomkmp.navigation.FavoritesDestination
 import com.yugamitech.ecomkmp.navigation.HomeDestination
 import com.yugamitech.ecomkmp.navigation.ShopDestination
@@ -32,6 +34,7 @@ fun EcomApplication(
             val navigator = rememberNavigator()
             MaterialTheme {
                 Scaffold(
+                    backgroundColor = Color.Transparent,
                     bottomBar = {
                         BottomNavBar(
                             navigateToHome = {
@@ -47,7 +50,12 @@ fun EcomApplication(
                                     navigator = navigator
                                 )
                             },
-                            navigateToBag = {},
+                            navigateToBag = {
+                                popUpToHomeScreen(
+                                    route = BagDestination.route,
+                                    navigator = navigator
+                                )
+                            },
                             navigateToFavorites = {
                                 popUpToHomeScreen(
                                     route = FavoritesDestination.route,
