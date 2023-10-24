@@ -52,11 +52,11 @@ fun BottomNavBar(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(12.dp)
+                    .weight(1f)
                     .clickable(
                         interactionSource = interactionSource,
                         indication = null,
                         onClick = {
-                            currentSelectedBottomOption = bottomNavItem.id
                             when (bottomNavItem.title) {
                                 HomeDestination.titleTextId -> navigateToHome()
                                 ShopDestination.titleTextId -> navigateToShop()
@@ -67,9 +67,9 @@ fun BottomNavBar(
                         }
                     )
             ) {
-                val itemColor = if (bottomNavItem.id == currentSelectedBottomOption) button_red else button_light_gray
+                val itemColor = if (bottomNavItem.id == currentSelectedBottomOption.value) button_red else button_light_gray
                 Icon(
-                    imageVector = if (bottomNavItem.id == currentSelectedBottomOption) bottomNavItem.selectedIcon else bottomNavItem.unselectedIcon,
+                    imageVector = if (bottomNavItem.id == currentSelectedBottomOption.value) bottomNavItem.selectedIcon else bottomNavItem.unselectedIcon,
                     contentDescription = bottomNavItem.title,
                     modifier = Modifier.size(24.dp),
                     tint = itemColor
@@ -77,7 +77,7 @@ fun BottomNavBar(
 
                 Text(
                     text = bottomNavItem.title,
-                    style = MaterialTheme.typography.body2.copy(
+                    style = MaterialTheme.typography.caption.copy(
                         color = itemColor
                     )
                 )
