@@ -13,14 +13,12 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.yugamitech.ecomkmp.app.util.currentSelectedBottomOption
 import com.yugamitech.ecomkmp.navigation.BagDestination
 import com.yugamitech.ecomkmp.navigation.FavoritesDestination
 import com.yugamitech.ecomkmp.navigation.HomeDestination
@@ -38,7 +36,6 @@ fun BottomNavBar(
     navigateToProfile: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedItem by remember { mutableStateOf(0) }
     val interactionSource = remember { MutableInteractionSource() }
 
     Row(
@@ -59,7 +56,7 @@ fun BottomNavBar(
                         interactionSource = interactionSource,
                         indication = null,
                         onClick = {
-                            selectedItem = index
+                            currentSelectedBottomOption = bottomNavItem.id
                             when (bottomNavItem.title) {
                                 HomeDestination.titleTextId -> navigateToHome()
                                 ShopDestination.titleTextId -> navigateToShop()
@@ -70,9 +67,9 @@ fun BottomNavBar(
                         }
                     )
             ) {
-                val itemColor = if (index == selectedItem) button_red else button_light_gray
+                val itemColor = if (bottomNavItem.id == currentSelectedBottomOption) button_red else button_light_gray
                 Icon(
-                    imageVector = if (index == selectedItem) bottomNavItem.selectedIcon else bottomNavItem.unselectedIcon,
+                    imageVector = if (bottomNavItem.id == currentSelectedBottomOption) bottomNavItem.selectedIcon else bottomNavItem.unselectedIcon,
                     contentDescription = bottomNavItem.title,
                     modifier = Modifier.size(24.dp),
                     tint = itemColor
@@ -90,6 +87,7 @@ fun BottomNavBar(
 }
 
 private data class BottomNavItem(
+    val id: BottomNavOptions,
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
@@ -97,28 +95,41 @@ private data class BottomNavItem(
 
 private val bottomNavItems = listOf(
     BottomNavItem(
+        id = BottomNavOptions.HOME,
         title = HomeDestination.titleTextId,
         selectedIcon = HomeDestination.selectedIcon,
         unselectedIcon = HomeDestination.unselectedIcon
     ),
     BottomNavItem(
+        id = BottomNavOptions.SHOP,
         title = ShopDestination.titleTextId,
         selectedIcon = ShopDestination.selectedIcon,
         unselectedIcon = ShopDestination.unselectedIcon
     ),
     BottomNavItem(
+        id = BottomNavOptions.BAG,
         title = BagDestination.titleTextId,
         selectedIcon = BagDestination.selectedIcon,
         unselectedIcon = BagDestination.unselectedIcon
     ),
     BottomNavItem(
+        id = BottomNavOptions.FAVORITE,
         title = FavoritesDestination.titleTextId,
         selectedIcon = FavoritesDestination.selectedIcon,
         unselectedIcon = FavoritesDestination.unselectedIcon
     ),
     BottomNavItem(
+        id = BottomNavOptions.PROFILE,
         title = ProfileDestination.titleTextId,
         selectedIcon = ProfileDestination.selectedIcon,
         unselectedIcon = ProfileDestination.unselectedIcon
     ),
 )
+
+enum class BottomNavOptions{
+    HOME,
+    SHOP,
+    BAG,
+    FAVORITE,
+    PROFILE
+}

@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,7 +78,8 @@ fun HomeItemsVerticalScroll(
                                 color = button_light_gray
                             )
                         )
-                    }
+                    },
+                    modifier = Modifier.weight(0.7f)
                 )
 
                 Text(
@@ -85,9 +87,12 @@ fun HomeItemsVerticalScroll(
                     style = MaterialTheme.typography.body1.copy(
                         color = black
                     ),
-                    modifier = Modifier.clickable(
+                    modifier = Modifier
+                        .weight(0.3f)
+                        .clickable(
                         onClick = onViewAllClick
-                    )
+                    ),
+                    textAlign = TextAlign.End
                 )
             }
 

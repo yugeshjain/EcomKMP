@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yugamitech.ecomkmp.app.di.koinModule
+import com.yugamitech.ecomkmp.app.util.popUpToHomeScreen
 import com.yugamitech.ecomkmp.commonui.bottombar.BottomNavBar
 import com.yugamitech.ecomkmp.navigation.FavoritesDestination
 import com.yugamitech.ecomkmp.navigation.HomeDestination
@@ -34,14 +35,24 @@ fun EcomApplication(
                     bottomBar = {
                         BottomNavBar(
                             navigateToHome = {
-                                navigator.navigate(HomeDestination.route)
+                                popUpToHomeScreen(
+                                    route = HomeDestination.route,
+                                    launchSingleTop = true,
+                                    navigator = navigator
+                                )
                             },
                             navigateToShop = {
-                                navigator.navigate(ShopDestination.route)
+                                popUpToHomeScreen(
+                                    route = ShopDestination.route,
+                                    navigator = navigator
+                                )
                             },
                             navigateToBag = {},
                             navigateToFavorites = {
-                                navigator.navigate(FavoritesDestination.route)
+                                popUpToHomeScreen(
+                                    route = FavoritesDestination.route,
+                                    navigator = navigator
+                                )
                             },
                             navigateToProfile = {}
                         )
