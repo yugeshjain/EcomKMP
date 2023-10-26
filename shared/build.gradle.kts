@@ -50,6 +50,8 @@ kotlin {
                 api(libs.koin)
                 api(libs.koin.compose)
                 resources.srcDirs("resources")
+
+                implementation(libs.androidx.annotation)
             }
         }
         val commonTest by getting {
