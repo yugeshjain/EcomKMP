@@ -23,7 +23,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,12 +33,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yugamitech.ecomkmp.commonui.components.StarRatingIndicator
 import com.yugamitech.ecomkmp.domain.model.ProductModel
 import com.yugamitech.ecomkmp.util.black
 import com.yugamitech.ecomkmp.util.button_light_gray
 import com.yugamitech.ecomkmp.util.button_red
 import com.yugamitech.ecomkmp.util.formatToDoubleDecimal
-import com.yugamitech.ecomkmp.util.star_yellow
 import com.yugamitech.ecomkmp.util.white
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -202,27 +201,9 @@ fun ScrollableRowItem(
                             .align(alignment = Alignment.BottomStart),
                         contentAlignment = Alignment.BottomStart,
                         content = {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Start,
+                            StarRatingIndicator(
                                 modifier = Modifier.fillMaxWidth(),
-                                content = {
-                                    for (i in 0..4) {
-                                        Icon(
-                                            imageVector = Icons.Default.Star,
-                                            contentDescription = "Rating",
-                                            tint = star_yellow,
-                                            modifier = Modifier.size(16.dp)
-                                        )
-                                    }
-
-                                    Text(
-                                        text = "(${productModel.ratingCount})",
-                                        style = MaterialTheme.typography.caption.copy(
-                                            color = button_light_gray
-                                        )
-                                    )
-                                }
+                                ratingCount = 10
                             )
                         }
                     )

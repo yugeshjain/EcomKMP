@@ -42,6 +42,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yugamitech.ecomkmp.commonui.components.ScreenHeadingText
 import com.yugamitech.ecomkmp.commonui.icons.IconCard
 import com.yugamitech.ecomkmp.commonui.topAppBar.EcomTopAppBar
 import com.yugamitech.ecomkmp.domain.model.CartItem
@@ -85,7 +86,7 @@ fun BagScreen(
                             .fillMaxSize()
                             .verticalScroll(rememberScrollState()),
                         content = {
-                            BagItemsHeading()
+                            ScreenHeadingText(title = "My Bag")
                             items.forEach { fakeCartItem ->
                                 cartItemComposable(
                                     cartItem = fakeCartItem
@@ -105,22 +106,6 @@ fun BagScreen(
                 }
             )
         }
-    )
-}
-
-@Composable
-private fun BagItemsHeading() {
-    Text(
-        text = "My Bag",
-        style = MaterialTheme.typography.h3.copy(
-            fontWeight = FontWeight.ExtraBold,
-            letterSpacing = 2.sp
-        ),
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(top = 20.dp, bottom = 8.dp)
-            .fillMaxWidth(),
-        textAlign = TextAlign.Start
     )
 }
 

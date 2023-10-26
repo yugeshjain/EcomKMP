@@ -20,7 +20,10 @@ fun EcomNavHost(
         initialRoute = HomeDestination.route,
     ) {
         homeGraph(navigator = ecomNavigator)
-        favouritesGraph(navigator = ecomNavigator)
+        favouritesGraph(
+            navigator = ecomNavigator,
+            systemStatusBarPadding = systemStatusBarPadding
+        )
         bagGraph(
             navigator = ecomNavigator,
             systemStatusBarPadding = systemStatusBarPadding
