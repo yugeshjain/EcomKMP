@@ -16,7 +16,10 @@ import com.yugamitech.ecomkmp.commonui.bottombar.BottomNavBar
 import com.yugamitech.ecomkmp.navigation.BagDestination
 import com.yugamitech.ecomkmp.navigation.FavoritesDestination
 import com.yugamitech.ecomkmp.navigation.HomeDestination
+import com.yugamitech.ecomkmp.navigation.ProfileDestination
 import com.yugamitech.ecomkmp.navigation.ShopDestination
+import moe.tlaster.precompose.navigation.NavOptions
+import moe.tlaster.precompose.navigation.PopUpTo
 import moe.tlaster.precompose.navigation.rememberNavigator
 import org.koin.compose.KoinApplication
 
@@ -38,10 +41,14 @@ fun EcomApplication(
                     bottomBar = {
                         BottomNavBar(
                             navigateToHome = {
-                                popUpToHomeScreen(
+                                navigator.navigate(
                                     route = HomeDestination.route,
-                                    launchSingleTop = true,
-                                    navigator = navigator
+                                    options = NavOptions(
+                                        popUpTo = PopUpTo(
+                                            route = HomeDestination.route,
+                                            inclusive = true
+                                        )
+                                    )
                                 )
                             },
                             navigateToShop = {
@@ -62,7 +69,12 @@ fun EcomApplication(
                                     navigator = navigator
                                 )
                             },
-                            navigateToProfile = {}
+                            navigateToProfile = {
+                                popUpToHomeScreen(
+                                    route = ProfileDestination.route,
+                                    navigator = navigator
+                                )
+                            }
                         )
                     },
                     modifier = Modifier.fillMaxSize(),

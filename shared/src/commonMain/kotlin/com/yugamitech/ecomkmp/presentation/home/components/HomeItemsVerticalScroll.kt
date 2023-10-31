@@ -96,9 +96,7 @@ fun HomeItemsVerticalScroll(
             }
 
             LazyRow(
-                modifier = Modifier
-                    .height(300.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 content = {
                     itemsIndexed(items = itemList) { index, product ->
                         ScrollableRowItem(

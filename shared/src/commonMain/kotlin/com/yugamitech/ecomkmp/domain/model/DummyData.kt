@@ -139,3 +139,22 @@ val fakeCart = Cart(
         )
     )
 )
+
+val fakeProfile = UserModel(
+    firstName = "Yugesh",
+    lastName = "Jain",
+    age = 24,
+    gender = "Male",
+    email = "my@profile.com",
+    phone = "9876543210",
+    profilePic = "epicdp.png"
+)
+
+val profileOptions = listOf(
+    Pair("My orders", "Already have 12 orders"),
+    Pair("Shipping addresses", "3 addresses"),
+    Pair("Payment methods", "visa **34"),
+    Pair("Promocodes", "You have special promocodes"),
+    Pair("My reviews", "Reviews for 4 items"),
+    Pair("Settings", "Notifications, password"),
+)

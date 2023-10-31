@@ -6,6 +6,7 @@ import com.yugamitech.ecomkmp.navigation.HomeDestination
 import com.yugamitech.ecomkmp.presentation.bag.bagGraph
 import com.yugamitech.ecomkmp.presentation.favorites.favouritesGraph
 import com.yugamitech.ecomkmp.presentation.home.homeGraph
+import com.yugamitech.ecomkmp.presentation.profile.profileGraph
 import com.yugamitech.ecomkmp.presentation.shop.shopGraph
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
@@ -29,6 +30,10 @@ fun EcomNavHost(
             systemStatusBarPadding = systemStatusBarPadding
         )
         shopGraph(
+            navigator = ecomNavigator,
+            systemStatusBarPadding = systemStatusBarPadding
+        )
+        profileGraph(
             navigator = ecomNavigator,
             systemStatusBarPadding = systemStatusBarPadding
         )
