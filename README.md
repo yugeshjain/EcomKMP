@@ -2,8 +2,6 @@
 
   <p align="left"> A e-commerce app built using Compose Multiplatform for Android and iOS </p>
 
-   This app was previously written in Jetpack Compose for Android in [JetTaskBoard](https://github.com/pushpalroy/jetTaskBoard). Now, it has been migrated to multiplatform.
-
   <p align="left">
       <a href = "https://github.com/JetBrains/compose-multiplatform/releases">
         <img src = "https://img.shields.io/badge/Compose%20Multiplatform-1.5.3-blue.svg?color=blue&style=for-the-badge" />
@@ -11,17 +9,11 @@
       <a href="https://kotlinlang.org/docs/releases.html">
         <img src="https://img.shields.io/badge/Kotlin-1.9.10-blue.svg?color=blue&style=for-the-badge"/>
       </a>
-      <a href = "https://github.com/yugeshjain/EcomKMP/pulls">
-         <img src="https://img.shields.io/github/issues-pr/pushpalroy/JetTaskBoardKMP?color=yellowgreen&style=for-the-badge" alt="Pull Requests Badge"/>
-      </a>
-      <a href = "https://github.com/yugeshjain/EcomKMP/issues">
-          <img src="https://img.shields.io/github/issues/pushpalroy/JetTaskBoardKMP?color=orange&style=for-the-badge" />
-      </a>
   </p>
 
 ### ⚒️ Architecture
 
-JetTaskBoardKMP follows the principles of Clean Architecture.
+EcomKMP follows the principles of Clean Architecture.
 
 ### 👨‍💻 Tech stack
 
@@ -32,7 +24,6 @@ JetTaskBoardKMP follows the principles of Clean Architecture.
 | 💉  DI                |          [Koin](https://insert-koin.io/docs/reference/koin-mp/kmp/)                                       |
 | 🧭  Navigation        |        [Tlaster / PreCompose](https://github.com/Tlaster/PreCompose)                                      |
 | 🧶  Multi-threading   |     [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)                                  |
-| 📼  Persistence       | [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings)                             |
 
 ### 🖥️  Screenshots
 
@@ -40,17 +31,19 @@ JetTaskBoardKMP follows the principles of Clean Architecture.
 <table style="width:100%">
   <tr>
     <th>Home</th>
+    <th>Home Scrolled</th>
     <th>Shop</th>
     <th>Bag</th>
     <th>Favorite</th>
     <th>Profile</th>
   </tr>
   <tr>
-    <td><img src = "art/homeandroid.png" width="100%"/></td> 
-    <td><img src = "art/shopandroid.png" width="100%"/></td>
-    <td><img src = "art/bagandroid.png" width="100%"/></td>
-    <td><img src = "art/favoriteandroid.png" width="100%"/></td>
-    <td><img src = "art/profileandroid.png" width="100%"/></td>
+    <td><img src = "art/androidhome.png" width=150/></td>
+    <td><img src = "art/androidhomescrolled.png" width=150/></td>
+    <td><img src = "art/shopandroid.png" width=150/></td>
+    <td><img src = "art/bagandroid.png" width=150/></td>
+    <td><img src = "art/favoriteandroid.png" width=150/></td>
+    <td><img src = "art/profileandroid.png" width=150/></td>
   </tr>
 </table>
 
@@ -59,17 +52,19 @@ JetTaskBoardKMP follows the principles of Clean Architecture.
 <table style="width:100%">
   <tr>
     <th>Home</th>
+    <th>Home Scrolled</th>
     <th>Shop</th>
     <th>Bag</th>
     <th>Favorite</th>
     <th>Profile</th>
   </tr>
   <tr>
-    <td><img src = "art/homeios.png" width="100%"/></td> 
-    <td><img src = "art/shopios.png" width="100%"/></td>
-    <td><img src = "art/bagios.png" width="100%"/></td>
-    <td><img src = "art/favoriteios.png" width="100%"/></td>
-    <td><img src = "art/profileios.png" width="100%"/></td>
+    <td><img src = "art/homeios.png" width=150/></td>
+    <td><img src = "art/homeiosscrolled.png" width=150/></td>
+    <td><img src = "art/shopios.png" width=150/></td>
+    <td><img src = "art/bagios.png" width=150/></td>
+    <td><img src = "art/favoriteios.png" width=150/></td>
+    <td><img src = "art/profileios.png" width=150/></td>
   </tr>
 </table>
 
@@ -171,6 +166,11 @@ To run your application on an iOS simulator in Android Studio, modify the `iosAp
 
 </details>
 
-### Find this project useful ? ❤️
+## Design 
+
+Designed by [Hitesh Tapaniya](https://www.figma.com/@hiteshbenzatine). [E-Commerce App Design](https://www.figma.com/community/file/1131440097475381135)
+
+
+## Find this project useful ? ❤️
 
 - Support it by clicking the ⭐️ button on the upper right of this page. ✌️
