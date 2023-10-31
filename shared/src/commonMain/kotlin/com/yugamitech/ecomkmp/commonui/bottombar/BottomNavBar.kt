@@ -1,5 +1,7 @@
 package com.yugamitech.ecomkmp.commonui.bottombar
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -9,14 +11,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import com.yugamitech.ecomkmp.app.util.currentSelectedBottomOption
 import com.yugamitech.ecomkmp.navigation.BagDestination
@@ -26,7 +27,11 @@ import com.yugamitech.ecomkmp.navigation.ProfileDestination
 import com.yugamitech.ecomkmp.navigation.ShopDestination
 import com.yugamitech.ecomkmp.util.button_light_gray
 import com.yugamitech.ecomkmp.util.button_red
+import com.yugamitech.ecomkmp.util.white
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun BottomNavBar(
     navigateToHome: () -> Unit,
@@ -40,6 +45,7 @@ fun BottomNavBar(
 
     Row(
         modifier = modifier
+            .background(color = white)
             .padding(horizontal = 12.dp)
             .fillMaxWidth()
             .height(64.dp),
@@ -67,12 +73,19 @@ fun BottomNavBar(
                         }
                     )
             ) {
-                val itemColor = if (bottomNavItem.id == currentSelectedBottomOption.value) button_red else button_light_gray
-                Icon(
-                    imageVector = if (bottomNavItem.id == currentSelectedBottomOption.value) bottomNavItem.selectedIcon else bottomNavItem.unselectedIcon,
+                val itemColor =
+                    if (bottomNavItem.id == currentSelectedBottomOption.value) button_red else button_light_gray
+                Image(
+                    painter = painterResource(
+                        res = if (bottomNavItem.id == currentSelectedBottomOption.value) {
+                            bottomNavItem.selectedIcon
+                        } else {
+                            bottomNavItem.unselectedIcon
+                        }
+                    ),
                     contentDescription = bottomNavItem.title,
-                    modifier = Modifier.size(24.dp),
-                    tint = itemColor
+                    modifier = Modifier.size(22.dp),
+                    colorFilter = ColorFilter.tint(color = itemColor)
                 )
 
                 Text(
@@ -89,8 +102,8 @@ fun BottomNavBar(
 private data class BottomNavItem(
     val id: BottomNavOptions,
     val title: String,
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector
+    val selectedIcon: String,
+    val unselectedIcon: String
 )
 
 private val bottomNavItems = listOf(
@@ -126,7 +139,7 @@ private val bottomNavItems = listOf(
     ),
 )
 
-enum class BottomNavOptions{
+enum class BottomNavOptions {
     HOME,
     SHOP,
     BAG,

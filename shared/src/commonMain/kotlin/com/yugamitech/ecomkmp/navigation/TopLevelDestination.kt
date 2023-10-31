@@ -1,7 +1,6 @@
 package com.yugamitech.ecomkmp.navigation
 
 import androidx.compose.runtime.Immutable
-import androidx.compose.ui.graphics.vector.ImageVector
 
 /**
  * Type for the top level destinations in the application. Each of these destinations
@@ -12,8 +11,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 interface TopLevelDestination : EcomNavDestination {
     override val route: String
     override val destination: String
-    val selectedIcon: ImageVector
-    val unselectedIcon: ImageVector
+    val selectedIcon: String
+    val unselectedIcon: String
     val iconTextId: String
     val titleTextId: String
 }

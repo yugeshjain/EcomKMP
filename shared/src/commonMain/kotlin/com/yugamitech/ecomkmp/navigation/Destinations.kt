@@ -1,24 +1,10 @@
 package com.yugamitech.ecomkmp.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.List
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.ui.graphics.vector.ImageVector
-
-
 object HomeDestination : TopLevelDestination {
     override val route: String = "home_route"
     override val destination: String = "home_destination"
-    override val selectedIcon: ImageVector = Icons.Filled.Home
-    override val unselectedIcon: ImageVector = Icons.Outlined.Home
+    override val selectedIcon: String = "bottomnavicons/homeselected.png"
+    override val unselectedIcon: String = "bottomnavicons/homeunselected.png"
     override val iconTextId: String = "Home"
     override val titleTextId: String = "Home"
 }
@@ -26,8 +12,8 @@ object HomeDestination : TopLevelDestination {
 object ShopDestination : TopLevelDestination {
     override val route: String = "shop_route"
     override val destination: String = "shop_destination"
-    override val selectedIcon: ImageVector = Icons.Filled.List
-    override val unselectedIcon: ImageVector = Icons.Outlined.List
+    override val selectedIcon: String = "bottomnavicons/shopselected.png"
+    override val unselectedIcon: String = "bottomnavicons/shopunselected.png"
     override val iconTextId: String = "Shop"
     override val titleTextId: String = "Shop"
 }
@@ -35,8 +21,8 @@ object ShopDestination : TopLevelDestination {
 object BagDestination : TopLevelDestination {
     override val route: String = "bag_route"
     override val destination: String = "bag_destination"
-    override val selectedIcon: ImageVector = Icons.Filled.ShoppingCart
-    override val unselectedIcon: ImageVector = Icons.Outlined.ShoppingCart
+    override val selectedIcon: String = "bottomnavicons/bagselected.png"
+    override val unselectedIcon: String = "bottomnavicons/bagunselected.png"
     override val iconTextId: String = "Bag"
     override val titleTextId: String = "Bag"
 }
@@ -44,8 +30,8 @@ object BagDestination : TopLevelDestination {
 object FavoritesDestination : TopLevelDestination {
     override val route: String = "favorites_route"
     override val destination: String = "favorites_destination"
-    override val selectedIcon: ImageVector = Icons.Filled.Favorite
-    override val unselectedIcon: ImageVector = Icons.Outlined.FavoriteBorder
+    override val selectedIcon: String = "bottomnavicons/favoriteselected.png"
+    override val unselectedIcon: String = "bottomnavicons/favoriteunselected.png"
     override val iconTextId: String = "Favorites"
     override val titleTextId: String = "Favorites"
 }
@@ -53,8 +39,8 @@ object FavoritesDestination : TopLevelDestination {
 object ProfileDestination : TopLevelDestination {
     override val route: String = "profile_route"
     override val destination: String = "profile_destination"
-    override val selectedIcon: ImageVector = Icons.Filled.Person
-    override val unselectedIcon: ImageVector = Icons.Outlined.Person
+    override val selectedIcon: String = "bottomnavicons/profileselected.png"
+    override val unselectedIcon: String = "bottomnavicons/profileunselected.png"
     override val iconTextId: String = "Profile"
     override val titleTextId: String = "Profile"
 }

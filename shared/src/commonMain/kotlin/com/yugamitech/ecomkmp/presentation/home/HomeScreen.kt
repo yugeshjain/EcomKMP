@@ -1,5 +1,6 @@
 package com.yugamitech.ecomkmp.presentation.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -9,11 +10,14 @@ import com.yugamitech.ecomkmp.domain.model.fakeSaleProducts
 import com.yugamitech.ecomkmp.presentation.home.components.HomeItemsVerticalScroll
 import com.yugamitech.ecomkmp.presentation.home.components.PageTopSaleCard
 import com.yugamitech.ecomkmp.presentation.home.components.SectionBanner
+import com.yugamitech.ecomkmp.util.off_white_bg
 
 @Composable
 fun HomeScreen() {
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .background(color = off_white_bg)
+            .fillMaxSize(),
         content = {
             item {
                 PageTopSaleCard(
