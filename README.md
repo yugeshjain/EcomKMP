@@ -25,6 +25,11 @@ EcomKMP follows the principles of Clean Architecture.
 | 🧭  Navigation        |        [Tlaster / PreCompose](https://github.com/Tlaster/PreCompose)                                      |
 | 🧶  Multi-threading   |     [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)                                  |
 
+
+### 📹 Video
+<img src = "art/ecom.gif"/>
+
+
 ### 🖥️  Screenshots
 
 #### Android
