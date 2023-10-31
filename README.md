@@ -13,7 +13,7 @@
 
 ### ⚒️ Architecture
 
-JetTaskBoardKMP follows the principles of Clean Architecture.
+EcomKMP follows the principles of Clean Architecture.
 
 ### 👨‍💻 Tech stack
 
