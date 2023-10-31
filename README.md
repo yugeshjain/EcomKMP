@@ -40,17 +40,19 @@ JetTaskBoardKMP follows the principles of Clean Architecture.
 <table style="width:100%">
   <tr>
     <th>Home</th>
+    <th>Home Scrolled</th>
     <th>Shop</th>
     <th>Bag</th>
     <th>Favorite</th>
     <th>Profile</th>
   </tr>
   <tr>
-    <td><img src = "art/homeandroid.png" width="100%"/></td> 
-    <td><img src = "art/shopandroid.png" width="100%"/></td>
-    <td><img src = "art/bagandroid.png" width="100%"/></td>
-    <td><img src = "art/favoriteandroid.png" width="100%"/></td>
-    <td><img src = "art/profileandroid.png" width="100%"/></td>
+    <td><img src = "art/androidhome.png" height=300/></td>
+    <td><img src = "art/androidhomescrolled.png" height=300/></td>
+    <td><img src = "art/shopandroid.png" height=300/></td>
+    <td><img src = "art/bagandroid.png" height=300/></td>
+    <td><img src = "art/favoriteandroid.png" height=300/></td>
+    <td><img src = "art/profileandroid.png" height=300/></td>
   </tr>
 </table>
 
@@ -59,17 +61,19 @@ JetTaskBoardKMP follows the principles of Clean Architecture.
 <table style="width:100%">
   <tr>
     <th>Home</th>
+    <th>Home Scrolled</th>
     <th>Shop</th>
     <th>Bag</th>
     <th>Favorite</th>
     <th>Profile</th>
   </tr>
   <tr>
-    <td><img src = "art/homeios.png" width="100%"/></td> 
-    <td><img src = "art/shopios.png" width="100%"/></td>
-    <td><img src = "art/bagios.png" width="100%"/></td>
-    <td><img src = "art/favoriteios.png" width="100%"/></td>
-    <td><img src = "art/profileios.png" width="100%"/></td>
+    <td><img src = "art/homeios.png" height=300/></td>
+    <td><img src = "art/homeiosscrolled.png" height=300/></td>
+    <td><img src = "art/shopios.png" height=300/></td>
+    <td><img src = "art/bagios.png" height=300/></td>
+    <td><img src = "art/favoriteios.png" height=300/></td>
+    <td><img src = "art/profileios.png" height=300/></td>
   </tr>
 </table>
 
