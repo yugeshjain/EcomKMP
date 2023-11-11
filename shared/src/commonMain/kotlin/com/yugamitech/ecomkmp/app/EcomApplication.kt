@@ -78,10 +78,10 @@ fun EcomApplication(
                         )
                     },
                     modifier = Modifier.fillMaxSize(),
-                ) {
+                ) { innerPadding ->
                     Box(
                         modifier = Modifier
-                            .padding(bottom = 64.dp)
+                            .padding(innerPadding)
                             .fillMaxSize(),
                         content = {
                             EcomNavHost(
