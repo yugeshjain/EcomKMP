@@ -24,6 +24,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,222 +63,164 @@ fun BagScreen(
     systemStatusBarPadding: Dp
 ) {
     val items = fakeCart.cartItems + fakeCart.cartItems
+    var totalAmount = 0.0
+    LaunchedEffect(Unit) {
+        items.forEach {
+            totalAmount += it.price.times(it.qty)
+        }
+    }
     Column(
-        modifier = Modifier
-            .padding(top = systemStatusBarPadding)
-            .fillMaxSize()
+        modifier = Modifier.padding(top = systemStatusBarPadding).fillMaxSize()
             .background(color = off_white_bg),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.Start,
-        content = {
+    ) {
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
             EcomTopAppBar(
                 actionIcon = Icons.Default.Search,
                 onActionIconClick = {},
                 elevation = 0.dp,
                 backgroundColor = off_white_bg
             )
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.BottomCenter,
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .padding(bottom = 100.dp)
-                            .fillMaxSize()
-                            .verticalScroll(rememberScrollState()),
-                        content = {
-                            ScreenHeadingText(title = "My Bag")
-                            items.forEach { fakeCartItem ->
-                                cartItemComposable(
-                                    cartItem = fakeCartItem
-                                )
-                            }
-                        }
-                    )
-
-                    var totalAmount = 0.0
-                    items.forEach {
-                        totalAmount += it.price.times(it.qty)
-                    }
-                    CheckoutButton(
-                        totalAmount = totalAmount,
-                        onCheckoutClick = {}
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState())
+            ) {
+                ScreenHeadingText(title = "My Bag")
+                items.forEach { fakeCartItem ->
+                    cartItemComposable(
+                        cartItem = fakeCartItem
                     )
                 }
-            )
+            }
         }
-    )
+        CheckoutButton(totalAmount = totalAmount, onCheckoutClick = {})
+    }
 }
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun cartItemComposable(
-    cartItem: CartItem,
-    modifier: Modifier = Modifier
+    cartItem: CartItem, modifier: Modifier = Modifier
 ) {
-    val qty  = remember { mutableStateOf(cartItem.qty) }
-    Card(
-        modifier = modifier
-            .padding(vertical = 8.dp, horizontal = 16.dp)
-            .height(intrinsicSize = IntrinsicSize.Max),
+    val qty = remember { mutableStateOf(cartItem.qty) }
+    Card(modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+        .height(intrinsicSize = IntrinsicSize.Max),
         elevation = 4.dp,
         shape = RoundedCornerShape(size = 12.dp),
         content = {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                content = {
-                    Image(
-                        painter = painterResource(res = cartItem.image),
-                        contentDescription = cartItem.name,
-                        modifier = Modifier
-                            .weight(0.35f)
-                            .clip(shape = RoundedCornerShape(topStart = 12.dp, bottomStart = 12.dp)),
-                        contentScale = ContentScale.FillWidth,
+            Row(modifier = Modifier.fillMaxWidth(), content = {
+                Image(
+                    painter = painterResource(res = cartItem.image),
+                    contentDescription = cartItem.name,
+                    modifier = Modifier.weight(0.35f).clip(
+                        shape = RoundedCornerShape(
+                            topStart = 12.dp, bottomStart = 12.dp
+                        )
+                    ),
+                    contentScale = ContentScale.FillWidth,
+                )
+
+                Column(
+                    modifier = Modifier.padding(8.dp).weight(1f).fillMaxHeight(),
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = cartItem.name, style = MaterialTheme.typography.h6.copy(
+                            fontWeight = FontWeight.ExtraBold
+                        )
                     )
 
-                    Column(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .weight(1f)
-                            .fillMaxHeight(),
-                        horizontalAlignment = Alignment.Start,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = cartItem.name,
-                            style = MaterialTheme.typography.h6.copy(
-                                fontWeight = FontWeight.ExtraBold
-                            )
-                        )
+                    val colorText =
+                        annotatedString(primaryText = "Color: ", secondaryText = cartItem.color)
+                    val sizeText =
+                        annotatedString(primaryText = "Size: ", secondaryText = cartItem.size)
+                    Text(
+                        text = "$colorText    $sizeText"
+                    )
 
-                        val colorText =
-                            annotatedString(primaryText = "Color: ", secondaryText = cartItem.color)
-                        val sizeText =
-                            annotatedString(primaryText = "Size: ", secondaryText = cartItem.size)
-                        Text(
-                            text = "$colorText    $sizeText"
-                        )
-
-                        qtyMeter(
-                            price = cartItem.price.times(cartItem.qty),
-                            qty = qty
-                        )
-                    }
+                    qtyMeter(
+                        price = cartItem.price.times(cartItem.qty), qty = qty
+                    )
                 }
-            )
-        }
-    )
+            })
+        })
 }
 
 @Composable
 fun qtyMeter(
-    price: Double,
-    qty: MutableState<Int>,
-    modifier: Modifier = Modifier
+    price: Double, qty: MutableState<Int>, modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .padding(top = 8.dp)
-            .fillMaxWidth(),
+    Row(modifier = modifier.padding(top = 8.dp).fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
-        content =
-        {
-            Row(
-                modifier = modifier.padding(end = 8.dp),
+        content = {
+            Row(modifier = modifier.padding(end = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Start,
                 content = {
                     IconCard(
-                        imageSrc = "minus.png",
-                        contentDescription = null,
-                        onClick = {
+                        imageSrc = "minus.png", contentDescription = null, onClick = {
                             if (qty.value > 1) qty.value -= 1
-                        },
-                        colorFilter = ColorFilter.tint(color = dark_gray)
+                        }, colorFilter = ColorFilter.tint(color = dark_gray)
                     )
 
                     Text(
-                        text = qty.value.toString(),
-                        modifier = Modifier.padding(horizontal = 8.dp)
+                        text = qty.value.toString(), modifier = Modifier.padding(horizontal = 8.dp)
                     )
 
                     IconCard(
-                        imageSrc = "plus.png",
-                        contentDescription = null,
-                        onClick = {
+                        imageSrc = "plus.png", contentDescription = null, onClick = {
                             if (qty.value >= 1) qty.value += 1
-                        },
-                        colorFilter = ColorFilter.tint(color = dark_gray)
+                        }, colorFilter = ColorFilter.tint(color = dark_gray)
                     )
-                }
-            )
+                })
 
             Text(
                 text = "$${price.formatToDoubleDecimal()}",
                 style = MaterialTheme.typography.body1.copy(
-                    color = black,
-                    fontWeight = FontWeight.Normal
+                    color = black, fontWeight = FontWeight.Normal
                 )
             )
-        }
-    )
+        })
 }
 
 @Composable
 fun CheckoutButton(
-    totalAmount: Double,
-    onCheckoutClick: () -> Unit,
-    modifier: Modifier = Modifier
+    totalAmount: Double, onCheckoutClick: () -> Unit, modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(off_white_bg),
-        content = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth(),
-                content = {
-                    Text(
-                        text = "Total amount:",
-                        style = MaterialTheme.typography.body1.copy(
-                            color = text_light_gray
-                        )
+    Column(modifier = modifier.fillMaxWidth().background(off_white_bg), content = {
+        Row(verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            content = {
+                Text(
+                    text = "Total amount:", style = MaterialTheme.typography.body1.copy(
+                        color = text_light_gray
                     )
-                    Text(
-                        text = "$${totalAmount.formatToDoubleDecimal()}",
-                        style = MaterialTheme.typography.body1.copy(
-                            color = black,
-                            fontWeight = FontWeight.SemiBold
-                        )
+                )
+                Text(
+                    text = "$${totalAmount.formatToDoubleDecimal()}",
+                    style = MaterialTheme.typography.body1.copy(
+                        color = black, fontWeight = FontWeight.SemiBold
                     )
-                }
-            )
+                )
+            })
 
-            Button(
-                onClick = onCheckoutClick,
-                content = {
-                    Text(
-                        text = "CHECK OUT",
-                        style = MaterialTheme.typography.body1.copy(
-                            color = white
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
-                    )
-                },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
-                shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(backgroundColor = button_red)
-            )
-        }
-    )
+        Button(
+            onClick = onCheckoutClick,
+            content = {
+                Text(
+                    text = "CHECK OUT", style = MaterialTheme.typography.body1.copy(
+                        color = white
+                    ), modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center
+                )
+            },
+            modifier = Modifier.padding(horizontal = 16.dp).fillMaxWidth(),
+            shape = CircleShape,
+            colors = ButtonDefaults.buttonColors(backgroundColor = button_red)
+        )
+    })
 }
 
 fun annotatedString(
@@ -287,21 +230,11 @@ fun annotatedString(
     secondaryTextColor: Color = black
 ): AnnotatedString {
     return buildAnnotatedString {
-        withStyle(
-            style = SpanStyle(
-                color = primaryTextColor,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Light
-            ),
-            block = { append(primaryText) }
-        )
-        withStyle(
-            style = SpanStyle(
-                color = secondaryTextColor,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Light
-            ),
-            block = { append(secondaryText) }
-        )
+        withStyle(style = SpanStyle(
+            color = primaryTextColor, fontSize = 16.sp, fontWeight = FontWeight.Light
+        ), block = { append(primaryText) })
+        withStyle(style = SpanStyle(
+            color = secondaryTextColor, fontSize = 16.sp, fontWeight = FontWeight.Light
+        ), block = { append(secondaryText) })
     }
 }
